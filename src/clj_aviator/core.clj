@@ -48,3 +48,18 @@
                            (wrap-clj-val ret)))
                        (getName [] func-name))]
     (AviatorEvaluator/addFunction aviator-func)))
+
+(defn enable-trace!
+  []
+  (AviatorEvaluator/setTrace true))
+
+(defn disable-trace!
+  []
+  (AviatorEvaluator/setTrace false))
+
+(defn optimize-mode
+  [mode]
+  (case mode
+    :eval (do (AviatorEvaluator/setOptimize AviatorEvaluator/EVAL) true)
+    :compile (do (AviatorEvaluator/setOptimize AviatorEvaluator/COMPILE) true)
+    false))
