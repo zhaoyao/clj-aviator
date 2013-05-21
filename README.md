@@ -1,10 +1,33 @@
 # clj-aviator
 
-A Clojure library designed to ... well, that part is up to you.
+Clojure wrapper for [Aviator](https://github.com/killme2008/aviator)
 
 ## Usage
 
-FIXME
+```clojure
+
+(require '(clj-aviator [core :as aviator]))
+
+(aviator/execute "1 + 2") ; == AviatorEvaluator.execute("1 + 1")
+(aviator/execute "1 + x" {"x" 1}) ; == AviatorEvaluator.execute("1 + 1", {"x" 1})
+(aviator/execute* "1 + x" {:x 1}) ; == AviatorEvaluator.execute("1 + 1", {"x" 1})
+(aviator/compile "1 + x") ; == AviatorEvaluator.compile("1 + 1")
+(aviator/execute-expr (aviator/compile "1+x") {"x" 1})
+(aviator/execute-expr* (aviator/compile "1+x") {:x 1})
+
+(aviator/enable-trace!)
+(aviator/disable-trace!)
+
+(aviator/optimize-mode :eval)
+(aviator/optimize-mode :compile)
+
+```
+
+##TODO
+
+`AviatorEvaluator.setTraceStream`
+
+
 
 ## License
 
