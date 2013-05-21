@@ -21,6 +21,9 @@ Clojure wrapper for [Aviator](https://github.com/killme2008/aviator)
 (aviator/optimize-mode :eval)
 (aviator/optimize-mode :compile)
 
+(aviator/add-func "isOdd" #(odd? %))
+(aviator/execute "isOdd(5)") ; => true
+
 ```
 
 ##TODO
